@@ -8,25 +8,40 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Contact System</h1>
-    <?php
-        print '<h2>All messages</h2>';
-        $messages = array();
-        $message = array(
-            'name' => 'John',
-            'email' => 'john@example.com',
-            'message' => 'Hello, world!'
-        );
-        array_push($messages, $message);
-        echo '<table><tr><th>Name</th><th>Email</th><th>Message</th></tr>';
-        foreach ($messages as $message) {
-            echo '<tr>';
-            echo '<td>' . $message['name'] . '</td>';
-            echo '<td>' . $message['email'] . '</td>';
-            echo '<td>' . $message['message'] . '</td>';
-            echo '</tr>';
-        }
-        echo '</table>';
-    ?>
+    <nav>
+        <a href="index.php">Home</a>
+        <a href="view.php">View Messages</a>
+    </nav>
+    <div class="container">
+        <h1>Contact System</h1>
+        <?php
+        session_start();
+         if(isset($_SESSION['success'])){
+             echo '<p class="success">'.$_SESSION['success'].'</p>';
+             unset($_SESSION['success']);
+         }
+            if(isset($_SESSION['error'])){
+                echo '<p class="error">'.$_SESSION['error'].'</p>';
+                unset($_SESSION['error']);
+            }
+
+        ?>
+        <form action="save.php" method="post">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" name="name" id="name" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+            <input type="email" name="email" id="email" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="message">Message</label>
+            <textarea name="message" id="message" class="form-control"></textarea>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </div>
 </body>
 </html>
