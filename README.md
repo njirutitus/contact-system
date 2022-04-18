@@ -10,7 +10,7 @@ To run this code locally:
 2. create contact database
 3. run `php migrations.php` to create tables
 4. run `php -S localhost:8080`
-5. open [localhost:8080](localhost:8080)
+5. open [localhost:8080](http://localhost:8080)
 
 ## Functions
 
