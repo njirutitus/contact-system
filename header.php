@@ -12,6 +12,18 @@
 
 <body>
     <nav>
-        <a href="index.php">Home</a>
-        <a href="view.php">View Messages</a>
+        <ul>
+            <li><a href="index.php">Home</a></li>
+        </ul>
+        <ul>
+            <li><a href="view.php">View Messages</a></li>
+            <?php session_start(); if(isset($_SESSION['user'])): ?>
+            <li><a href="logout.php"><?php echo $_SESSION['user']['name']; ?> (Logout)</a></li>
+            <?php else: ?>
+            <li><a href="login.php">Login</a></li>
+            <li><a href="register.php">Register</a></li>
+            <?php endif; ?>
+        </ul>
+
+
     </nav>
